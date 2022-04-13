@@ -1,0 +1,92 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    <changeSet author="taina (generated)" id="1649815186098-1">
+        <createSequence incrementBy="50" sequenceName="sequenceGenerator" startValue="1"/>
+    </changeSet>
+    <changeSet author="taina (generated)" id="1649815186098-3">
+        <createTable tableName="livro_caixa">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="livro_caixaPK"/>
+            </column>
+            <column name="data_lancamento" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="descricao" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="tipo" type="VARCHAR(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="valor" type="numeric(21, 2)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cliente_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="taina (generated)" id="1649815186098-4">
+        <createTable tableName="usuario">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="usuarioPK"/>
+            </column>
+            <column name="data_cadastro" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(100)"/>
+            <column name="login" type="VARCHAR(15)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="perfil" type="VARCHAR(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="senha" type="VARCHAR(10)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="status" type="VARCHAR(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="telefone" type="VARCHAR(11)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="taina (generated)" id="1649815258502-2">
+        <createTable tableName="cliente">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="clientePK"/>
+            </column>
+            <column name="cep" type="VARCHAR(8)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cidade" type="VARCHAR(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cpf_cnpj" type="VARCHAR(14)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_cadastro" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(100)"/>
+            <column name="logradouro" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="nome" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="telefone" type="VARCHAR(11)"/>
+            <column name="uf" type="VARCHAR(2)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="taina (generated)" id="1649815186098-5">
+        <addUniqueConstraint columnNames="cpf_cnpj" constraintName="UC_CLIENTECPF_CNPJ_COL" tableName="cliente"/>
+    </changeSet>
+    <changeSet author="taina (generated)" id="1649815186098-6">
+        <addUniqueConstraint columnNames="login" constraintName="UC_USUARIOLOGIN_COL" tableName="usuario"/>
+    </changeSet>
+    <changeSet author="taina (generated)" id="1649815186098-7">
+        <addForeignKeyConstraint baseColumnNames="cliente_id" baseTableName="livro_caixa" constraintName="FK4t8shi1fx73j74x4a75ku6olv" deferrable="false" initiallyDeferred="false" referencedColumnNames="id" referencedTableName="cliente" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

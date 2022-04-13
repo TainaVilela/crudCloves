@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JpaBuddyIdeaProjectConfig">
-    <option name="liquibaseDirectory" value="db\changelog\2022\04" />
     <option name="defaultUnitInitialized" value="true" />
-    <option name="snapshotDbValue" value="0b24e65a-613a-40d0-b80c-0bd7e56bc4ae" />
-    <option name="newEntityIdStrategy" />
   </component>
 </project>
